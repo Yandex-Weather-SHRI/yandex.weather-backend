@@ -21,6 +21,7 @@ function locationMiddleware(request, response, next) {
       request.geoid = json.locality.id
       next()
     })
+    .catch(() => next('Can\'t connect to Yandex API'))
 }
 
 module.exports.locationMiddleware = locationMiddleware

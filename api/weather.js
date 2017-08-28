@@ -23,7 +23,7 @@ function weatherAPI(api) {
           JSON.parse(data)
         )
       })
-      .catch(next)
+      .catch(() => next('Can\'t connect to Yandex API'))
   })
 
   api.get('/forecast', (request, response, next) => {
@@ -36,7 +36,7 @@ function weatherAPI(api) {
           )(data)
         )
       })
-      .catch(next)
+      .catch(() => next('Can\'t connect to Yandex API'))
   })
 
   api.get('/alerts', (request, response, next) => {
@@ -46,7 +46,7 @@ function weatherAPI(api) {
           JSON.parse(data)
         )
       })
-      .catch(next)
+      .catch(() => next('Can\'t connect to Yandex API'))
   })
 }
 
