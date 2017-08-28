@@ -2,6 +2,7 @@
   "name": "yandex.weather-backend",
   "version": "0.1.0",
   "scripts": {
+    "start": "node ./index.js",
     "dev": "NODE_ENV=development node -r dotenv/config ./index.js",
     "prod": "NODE_ENV=production node -r dotenv/config ./index.js"
   },
