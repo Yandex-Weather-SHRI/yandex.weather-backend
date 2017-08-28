@@ -1,0 +1,19 @@
+{
+  "name": "yandex.weather-backend",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "NODE_ENV=development node -r dotenv/config ./index.js",
+    "prod": "NODE_ENV=production node -r dotenv/config ./index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4",
+    "geoip-lite": "^1.2.1",
+    "morgan": "^1.8.2",
+    "ramda": "^0.24.1",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4"
+  }
+}
