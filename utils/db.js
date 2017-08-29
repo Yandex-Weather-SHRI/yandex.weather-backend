@@ -17,19 +17,19 @@ function isUserExists(name) {
 }
 
 function getUserSettings(name) {
-  return getUserByName(name).settings
+  return isUserExists(name) ? getUserByName(name).settings.category : false
 }
 
 function createUser(name, settings) {
   if(isUserExists(name))
     return false // TODO
-  return db.get('users').push({login: name, settings: settings}).find({ login: name }).write()
+  return db.get('users').push({login: name, settings: { category: settings }}).find({ login: name }).write()
 }
 
 function updateUserSettings(name, settings) {
   if(!isUserExists(name))
     return false // TODO
-  return db.get('users').find({ login: name }).assign({ settings: settings}).write()
+  return db.get('users').find({ login: name }).assign({ settings: { category: settings }}).write()
 }
 
 module.exports = {
