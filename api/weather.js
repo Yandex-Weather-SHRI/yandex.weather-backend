@@ -4,6 +4,7 @@ const R = require('ramda')
 const fetch = require('request-promise-native')
 
 const { forecastAdapter } = require('../utils/adapters')
+const { translateForecastData } = require('../utils/translators')
 
 
 function getRequestOptions(url) {
@@ -16,27 +17,21 @@ function getRequestOptions(url) {
 }
 
 function weatherAPI(api) {
-  api.get('/translations', (request, response, next) => {
-    fetch(getRequestOptions(`https://api.weather.yandex.ru/v1/translations?lang=${request.query.lang}`))
-      .then((data) => {
-        response.json(
-          JSON.parse(data)
-        )
-      })
-      .catch(() => next('Can\'t connect to Yandex API'))
-  })
-
   api.get('/forecast', (request, response, next) => {
-    fetch(getRequestOptions(`http://api.weather.yandex.ru/v1/forecast?geoid=${request.geoid}`))
-      .then((data) => {
-        response.json(
-          R.compose(
-            forecastAdapter,
-            JSON.parse
-          )(data)
-        )
-      })
-      .catch(() => next('Can\'t connect to Yandex API'))
+    Promise.all([
+      fetch(getRequestOptions('https://api.weather.yandex.ru/v1/translations?lang=ru_RU')),
+      fetch(getRequestOptions(`http://api.weather.yandex.ru/v1/forecast?geoid=${request.geoid}`))
+    ]).then(([translations, forecast]) => {
+        const forecastData = R.compose(
+          forecastAdapter,
+          JSON.parse
+        )(forecast)
+        const translatedForecastData = R.compose(
+          translateForecastData(forecastData),
+          JSON.parse
+        )(translations)
+        response.json(translatedForecastData)
+    })
   })
 
   api.get('/alerts', (request, response, next) => {
