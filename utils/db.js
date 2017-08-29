@@ -21,11 +21,15 @@ function getUserSettings(name) {
 }
 
 function createUser(name, settings) {
-  return isUserExists(name) ? false : Boolean(db.get('users').push({login: name, settings: settings}).write())
+  if(isUserExists(name))
+    return false // TODO
+  return db.get('users').push({login: name, settings: settings}).find({ login: name }).write()
 }
 
 function updateUserSettings(name, settings) {
-  return isUserExists(name) ? Boolean(db.get('users').find({ login: name }).assign({ settings: settings}).write()) : false
+  if(!isUserExists(name))
+    return false // TODO
+  return db.get('users').find({ login: name }).assign({ settings: settings}).write()
 }
 
 module.exports = {
