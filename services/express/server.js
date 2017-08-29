@@ -11,11 +11,12 @@ const { api } = require('../../api')
 
 
 function expressService() {
-  const app = express().use('*', cors());
+  const app = express()
 
   app.disable('x-powered-by')
 
   // apply middlewares
+  app.use('*', cors())
   app.use(morgan('dev'))
   app.use(locationMiddleware)
 
