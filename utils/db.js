@@ -16,26 +16,26 @@ function isUserExists(name) {
   return Boolean(getUserByName(name))
 }
 
-function getUserSettings(name) {
-  return isUserExists(name) ? getUserByName(name).settings.category : false
+function getUserCategories(name) {
+  return isUserExists(name) ? getUserByName(name).settings.categories : false
 }
 
-function createUser(name, settings) {
+function createUser(name, categories) {
   if(isUserExists(name))
     return false // TODO
-  return db.get('users').push({login: name, settings: { category: settings }}).find({ login: name }).write()
+  return db.get('users').push({login: name, settings: { categories }}).find({ login: name }).write()
 }
 
-function updateUserSettings(name, settings) {
+function updateUserCategories(name, categories) {
   if(!isUserExists(name))
     return false // TODO
-  return db.get('users').find({ login: name }).assign({ settings: { category: settings }}).write()
+  return db.get('users').find({ login: name }).assign({ settings: { categories }}).write()
 }
 
 module.exports = {
   getUserByName,
   isUserExists,
-  getUserSettings,
+  getUserCategories,
   createUser,
-  updateUserSettings,
+  updateUserCategories,
 }
