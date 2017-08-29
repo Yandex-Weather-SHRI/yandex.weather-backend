@@ -3,6 +3,7 @@
 const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
+const cors = require('cors')
 
 const { notFoundHandler, errorHandler } = require('../../middlewares/error')
 const { locationMiddleware } = require('../../middlewares/location')
@@ -10,7 +11,7 @@ const { api } = require('../../api')
 
 
 function expressService() {
-  const app = express()
+  const app = express().use('*', cors());
 
   app.disable('x-powered-by')
 
