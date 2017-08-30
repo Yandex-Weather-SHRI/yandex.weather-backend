@@ -44,7 +44,7 @@ function userAPI(api) {
       response.json(getUserCategories(login))
     }
     else {
-      next('User doesn\'t exist')
+      next(new Error('User doesn\'t exist'))
     }
   })
 }
