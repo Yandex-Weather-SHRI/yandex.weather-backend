@@ -10,7 +10,8 @@ function notFoundHandler(request, response, next) {
 function errorHandler(error, request, response, next) {
   response.status(500).json({
     code: 500,
-    message: error,
+    stack: error.stack,
+    message: error.message,
   })
 }
 
