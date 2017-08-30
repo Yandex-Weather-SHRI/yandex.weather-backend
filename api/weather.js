@@ -6,6 +6,8 @@ const fetch = require('request-promise-native')
 const { locationMiddleware } = require('../middlewares/location')
 const { forecastAdapter } = require('../utils/adapters')
 const { translateForecastData } = require('../utils/translators')
+const { getUserCategories } = require('../utils/db')
+const alertsMock = require('../mock/alerts')
 
 
 function getRequestOptions(url) {
@@ -36,13 +38,41 @@ function weatherAPI(api) {
   })
 
   api.get('/alerts', locationMiddleware, (request, response, next) => {
-    fetch(getRequestOptions(`http://api.weather.yandex.ru/v1/alerts?geoid=${request.geoid}`))
-      .then((data) => {
-        response.json(
-          JSON.parse(data)
-        )
-      })
-      .catch(() => next('Can\'t connect to Yandex API'))
+    try {
+      const { login } = request.query
+
+      if (!login) {
+        throw new Error('Invalid login parameter')
+      }
+
+      const categories = getUserCategories(login)
+      
+      if (!categories) {
+        throw new Error('User not exists')
+      }
+
+      const enabledCategories = categories.reduce((acc, category) => {
+        if (category.enabled) {
+          acc.push(category.name)
+        }
+        return acc
+      }, [])
+
+      fetch(getRequestOptions(`http://api.weather.yandex.ru/v1/alerts?geoid=${request.geoid}`))
+        .then((data) => {
+          const alertsData = JSON.parse(data)
+          const filteredAlerts = alertsData.concat(alertsMock).filter(({ code }) => {
+            const [category] = code.split(/\_/)
+            return enabledCategories.indexOf(category) >= 0
+          })
+
+          response.json(filteredAlerts)
+        })
+        .catch(() => next(new Error('Can\'t connect to Yandex API')))
+    }
+    catch (error) {
+      next(error)
+    }
   })
 }
 
