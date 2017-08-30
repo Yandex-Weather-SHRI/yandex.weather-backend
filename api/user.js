@@ -22,7 +22,7 @@ function userAPI(api) {
   api.post('/settings/categories', (request, response, next) => {
     try {
       const { login, items } = request.body
-      const categories = items ? JSON.parse(items) : []
+      const categories = items || []
 
       if (isSettingsValid(categories)) {
         const user = createUserOrUpdateUserCategories(login, categories)
