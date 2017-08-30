@@ -7,7 +7,6 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 
 const { notFoundHandler, errorHandler } = require('../../middlewares/error')
-const { locationMiddleware } = require('../../middlewares/location')
 const { api } = require('../../api')
 
 
@@ -21,7 +20,6 @@ function expressService() {
   app.use(morgan('dev'))
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: true }))
-  app.use(locationMiddleware)
 
   app.get('/ping', (request, response) => {
     response.json({ message: 'pong' })

@@ -3,6 +3,7 @@
 const R = require('ramda')
 const fetch = require('request-promise-native')
 
+const { locationMiddleware } = require('../middlewares/location')
 const { forecastAdapter } = require('../utils/adapters')
 const { translateForecastData } = require('../utils/translators')
 
@@ -17,7 +18,7 @@ function getRequestOptions(url) {
 }
 
 function weatherAPI(api) {
-  api.get('/forecast', (request, response, next) => {
+  api.get('/forecast', locationMiddleware, (request, response, next) => {
     Promise.all([
       fetch(getRequestOptions('https://api.weather.yandex.ru/v1/translations?lang=ru_RU')),
       fetch(getRequestOptions(`http://api.weather.yandex.ru/v1/forecast?geoid=${request.geoid}`))
@@ -34,7 +35,7 @@ function weatherAPI(api) {
     })
   })
 
-  api.get('/alerts', (request, response, next) => {
+  api.get('/alerts', locationMiddleware, (request, response, next) => {
     fetch(getRequestOptions(`http://api.weather.yandex.ru/v1/alerts?geoid=${request.geoid}`))
       .then((data) => {
         response.json(
