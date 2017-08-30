@@ -20,7 +20,7 @@ function isUserExists(login) {
 }
 
 function getUserCategories(login) {
-  return isUserExists(login) ? getUserByLogin(login).settings.categories : false
+  return isUserExists(login) ? getUserByLogin(login).settings.categories : null
 }
 
 function createUserOrUpdateUserCategories(login, categories) {
