@@ -110,3 +110,4 @@ jspm_packages
 .idea
 stats.json
 .env
+db.json
