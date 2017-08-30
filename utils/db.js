@@ -8,34 +8,44 @@ const db = low(adapter)
 db.defaults({ users: [] })
   .write()
 
-function getUserByName(name) {
-  return db.get('users').find({ login: name }).cloneDeep().value()
+function getUserByLogin(login) {
+  return db.get('users')
+    .find({ login })
+    .cloneDeep()
+    .value()
 }
 
-function isUserExists(name) {
-  return Boolean(getUserByName(name))
+function isUserExists(login) {
+  return Boolean(getUserByLogin(login))
 }
 
-function getUserCategories(name) {
-  return isUserExists(name) ? getUserByName(name).settings.categories : false
+function getUserCategories(login) {
+  return isUserExists(login) ? getUserByLogin(login).settings.categories : false
 }
 
-function createUser(name, categories) {
-  if(isUserExists(name))
-    return false // TODO
-  return db.get('users').push({login: name, settings: { categories }}).find({ login: name }).write()
-}
+function createUserOrUpdateUserCategories(login, categories) {
+  if (isUserExists(login)) {
+    const user = db.get('users').find({ login })
 
-function updateUserCategories(name, categories) {
-  if(!isUserExists(name))
-    return false // TODO
-  return db.get('users').find({ login: name }).assign({ settings: { categories }}).write()
+    if (categories.length) {
+      return user
+        .assign({ settings: { categories }})
+        .write()
+    }
+
+    return user.value()
+  }
+  else {
+    return db.get('users')
+      .push({ login, settings: { categories }})
+      .find({ login })
+      .write()
+  }
 }
 
 module.exports = {
-  getUserByName,
+  getUserByLogin,
   isUserExists,
   getUserCategories,
-  createUser,
-  updateUserCategories,
+  createUserOrUpdateUserCategories,
 }
