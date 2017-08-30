@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, voluptates.",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "heart_ok_today",
+    "significance": ""
+  },
+  {
+    "id": 2,
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, voluptates.",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "joint_ok_today",
+    "significance": ""
+  },
+  {
+    "id": 3,
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, voluptates.",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "skin_ok_today",
+    "significance": ""
+  }
+]
