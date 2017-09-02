@@ -8,7 +8,7 @@ function dbAPI(api) {
   api.use(express.static(__dirname + "../db.json"));
 
   api.get('/export_db', (request, response) => {
-    response.sendFile(path.resolve(__dirname + './../db.json'))
+    response.sendFile(path.resolve(__dirname, '..', 'db.json'))
   })
 }
 
