@@ -1,35 +1,68 @@
 [
   {
     "id": 1,
-    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, voluptates.",
+    "text": "Людям с заболеваниями сердца желательно уменьшить физическую активность",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "heart_ok_today",
+    "code": "heart_ok_day_0",
     "significance": ""
   },
   {
     "id": 2,
-    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, voluptates.",
+    "text": "Людям с заболеваниями сердца желательно уменьшить физическую активность",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "joint_ok_today",
+    "code": "heart_ok_day_1",
     "significance": ""
   },
   {
     "id": 3,
-    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, voluptates.",
+    "text": "Людям с заболеваниями суставов желательно уменьшить на них физическую нагрузку",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "skin_ok_today",
+    "code": "joint_ok_day_0",
+    "significance": ""
+  },
+  {
+    "id": 4,
+    "text": "Большая влажность и сильный ветер. Для людей, болеющих астмой, рекомендуем выбрать спокойную деятельность",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "asthma_ok_day_0",
+    "significance": ""
+  },
+  {
+    "id": 5,
+    "text": "Людям с заболеваниями суставов желательно уменьшить на них физическую нагрузку",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "joint_ok_day_0",
+    "significance": ""
+  },
+  {
+    "id": 6,
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, iusto.",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "badSight_ok_day_0",
     "significance": ""
   }
 ]
