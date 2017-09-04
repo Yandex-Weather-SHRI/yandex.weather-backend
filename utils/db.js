@@ -1,6 +1,8 @@
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 
+const { defaultCategorySettings } = require('../utils/settings')
+
 
 const adapter = new FileSync('db.json')
 const db = low(adapter)
@@ -37,7 +39,7 @@ function createUserOrUpdateUserCategories(login, categories) {
   }
   else {
     return db.get('users')
-      .push({ login, settings: { categories }})
+      .push({ login, settings: { categories: defaultCategorySettings }})
       .find({ login })
       .write()
   }
