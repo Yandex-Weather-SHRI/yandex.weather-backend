@@ -2,6 +2,8 @@
 
 Доступно по адресу https://weather-forecast-api.herokuapp.com/
 
+Что сейчас в базе? https://weather-forecast-api.herokuapp.com/v1/export_db
+
 `npm i`
 
 `npm run dev` - запуск сервера в режиме develop
