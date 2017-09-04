@@ -1,12 +1,26 @@
+`use strict`
+
 const low = require('lowdb')
+
 const FileSync = require('lowdb/adapters/FileSync')
+const fetch = require('request-promise-native')
+const { config } = require('../config/config')
 
 
 const adapter = new FileSync('db.json')
 const db = low(adapter)
 
-db.defaults({ users: [] })
-  .write()
+fetch(config.exportDataBaseURL)
+  .then((data) => {
+    const json = JSON.parse(data)
+    db.defaults(json)
+      .write()
+  })
+  .catch(() => {
+    db.defaults({ users: [] })
+      .write()
+  })
+
 
 function getUserByLogin(login) {
   return db.get('users')
