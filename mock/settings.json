@@ -1,0 +1,20 @@
+{
+  "health": {
+    "title": "Здоровье",
+    "categories": {
+      "heart": "Сердце",
+      "joint": "Суставы",
+      "asthma": "Астма",
+      "skin": "Кожа",
+      "allergy": "Аллергия"
+    }
+  },
+  "motorists": {
+    "title": "Автомобилисты",
+    "categories": {
+      "badVisibility": "Плохая видимость",
+      "washCar": "Помыть машину",
+      "ice": "Гололёд"
+    }
+  }
+}

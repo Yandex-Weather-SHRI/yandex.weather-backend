@@ -1,39 +1,15 @@
-const defaultCategorySettings = [
-  {
-    name: 'allergy',
-    enabled: false,
-  },
-  {
-    name: 'heart',
-    enabled: false,
-  },
-  {
-    name: 'joint',
-    enabled: false,
-  },
-  {
-    name: 'asthma',
-    enabled: false,
-  },
-  {
-    name: 'skin',
-    enabled: false,
-  },
-  {
-    name: 'badSight',
-    enabled: false,
-  },
-  {
-    name: 'washCar',
-    enabled: false,
-  },
-  {
-    name: 'ice',
-    enabled: false,
-  },
-]
+const groupsSchema = require('../mock/settings')
+
+const defaultCategorySettings = Object.keys(groupsSchema).reduce((acc, groupName) => {
+  const { categories } = groupsSchema[groupName]
+  const categoriesList = Object.keys(categories).map((category) => {
+    return { name: category, enabled: false, group: groupName }
+  })
+  return acc.concat(categoriesList)
+}, [])
 
 module.exports = {
+  groupsSchema,
   defaultCategorySettings,
 }
 

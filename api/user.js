@@ -5,13 +5,15 @@ const {
   getUserCategories,
   createUserOrUpdateUserCategories,
 } = require('../utils/db')
+const { groupsSchema } = require('../utils/settings')
 
 
 function isOneSettingValid(setting) {
   return typeof setting === 'object'
-    && Object.keys(setting).length === 2
+    && Object.keys(setting).length === 3
     && setting.hasOwnProperty('name')
     && setting.hasOwnProperty('enabled')
+    && setting.hasOwnProperty('group')
 }
 
 function isSettingsValid(settings) {
@@ -35,6 +37,10 @@ function userAPI(api) {
     catch (error) {
       next(error)
     }
+  })
+
+  api.get('/settings/schema', (request, response) => {
+    response.json(groupsSchema)
   })
 
   api.get('/settings/categories', (request, response, next) => {
