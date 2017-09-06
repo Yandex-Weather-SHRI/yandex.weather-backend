@@ -1,4 +1,5 @@
 const groupsSchema = require('../mock/settings')
+const onboardingCards = require('../mock/onboarding')
 
 const defaultCategorySettings = Object.keys(groupsSchema).reduce((acc, groupName) => {
   const { categories } = groupsSchema[groupName]
@@ -11,5 +12,6 @@ const defaultCategorySettings = Object.keys(groupsSchema).reduce((acc, groupName
 module.exports = {
   groupsSchema,
   defaultCategorySettings,
+  onboardingCards
 }
 

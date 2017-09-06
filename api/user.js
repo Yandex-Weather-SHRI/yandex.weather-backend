@@ -5,7 +5,7 @@ const {
   getUserCategories,
   createUserOrUpdateUserCategories,
 } = require('../utils/db')
-const { groupsSchema } = require('../utils/settings')
+const { groupsSchema, defaultCategorySettings, onboardingCards } = require('../utils/settings')
 
 
 function isOneSettingValid(setting) {
@@ -41,6 +41,15 @@ function userAPI(api) {
 
   api.get('/settings/schema', (request, response) => {
     response.json(groupsSchema)
+  })
+
+  api.get('/settings/default', (request, response) => {
+    response.json(defaultCategorySettings)
+  })
+
+  api.get('/settings/onboarding_cards', (request, response) => {
+    console.log(onboardingCards)
+    response.json(onboardingCards)
   })
 
   api.get('/settings/categories', (request, response, next) => {
