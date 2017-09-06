@@ -52,8 +52,10 @@ function createUserOrUpdateUserCategories(login, categories) {
     return user.value()
   }
   else {
+    categories = categories.length ? categories : defaultCategorySettings
+
     return db.get('users')
-      .push({ login, settings: { categories: defaultCategorySettings }})
+      .push({ login, settings: { categories }})
       .find({ login })
       .write()
   }
