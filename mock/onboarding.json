@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "text": "Людям с заболеваниями сердца желательно уменьшить физическую активность",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "heart_ok_day_0",
+    "significance": ""
+  },
+  {
+    "id": 6,
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, iusto.",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "badVisibility_ok_day_0",
+    "significance": ""
+  }
+]
