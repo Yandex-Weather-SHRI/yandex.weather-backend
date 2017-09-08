@@ -7,18 +7,18 @@
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "heart_ok_day_0",
+    "code": "heart_bad_day_0",
     "significance": ""
   },
   {
     "id": 2,
-    "text": "Людям с заболеваниями сердца желательно уменьшить физическую активность",
+    "text": "Людям с заболеваниями сердца хорошо",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "heart_ok_day_1",
+    "code": "heart_best_day_1",
     "significance": ""
   },
   {
