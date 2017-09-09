@@ -97,5 +97,49 @@
     "push": false,
     "code": "badVisibility_best_day_0",
     "significance": ""
+  },
+  {
+    "id": 9,
+    "text": "На дорогах ожидается гололед, будьте осторожнее",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "ice_bad_day_0",
+    "significance": ""
+  },
+  {
+    "id": 10,
+    "text": "Вероятность появления гололеда низкая, наслаждайтесь поездками",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "ice_best_day_1",
+    "significance": ""
+  },
+  {
+    "id": 11,
+    "text": "Ожидается сильный ветер, рекомендуется не оставлять автомобиль вблизи деревьев и неустойчивых конструкций, при возможности паркуйте авто под крышу",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "wind_bad_day_0",
+    "significance": ""
+  },
+  {
+    "id": 12,
+    "text": "Благоприятные погодные условия, сильного ветра, града и грозы не ожидается",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "wind_best_day_1",
+    "significance": ""
   }
 ]
