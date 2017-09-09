@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "text": "Людям с заболеваниями сердца хорошо",
+    "text": "Для людей со слабым сердцем благоприятный день",
     "text_short": "",
     "provider": "",
     "image_url": "",
@@ -12,7 +12,7 @@
   },
   {
     "id": 2,
-    "text": "Людям с заболеваниями сердца желательно уменьшить физическую активность",
+    "text": "Людям со слабым сердцем желательно уменьшить физическую активность",
     "text_short": "",
     "provider": "",
     "image_url": "",
@@ -23,46 +23,79 @@
   },
   {
     "id": 3,
-    "text": "Людям с заболеваниями суставов желательно уменьшить на них физическую нагрузку",
+    "text": "Для людей с суставами, реагирующими на погоду, рекомендуется уменьшить физическую активность",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "joint_ok_day_0",
+    "code": "joint_bad_day_0",
+    "significance": ""
+  },
+  {
+    "id": 33,
+    "text": "Для людей с суставами, реагирующими на погоду, благоприятный день",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "joint_best_day_1",
     "significance": ""
   },
   {
     "id": 4,
-    "text": "Большая влажность и сильный ветер. Для людей, болеющих астмой, рекомендуем выбрать спокойную деятельность",
+    "text": "Благоприятный день для людей с повышенной чувствительностью бронхов",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "asthma_ok_day_0",
+    "code": "asthma_best_day_0",
     "significance": ""
   },
   {
-    "id": 5,
-    "text": "Людям с заболеваниями суставов желательно уменьшить на них физическую нагрузку",
+    "id": 44,
+    "text": "Для людей с повышенной чувствительностью бронхов рекомендуется выбрать спокойную деятельность",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "joint_ok_day_0",
+    "code": "asthma_bad_day_1",
+    "significance": ""
+  },
+  {
+    "id": 7,
+    "text": "Рекомендуется снизить потребление кофеина или других крепких напитков",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "head_bad_day_0",
+    "significance": ""
+  },
+  {
+    "id": 8,
+    "text": "Благоприятный день для людей восприимчивых к резким перепадам давления",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "head_best_day_1",
     "significance": ""
   },
   {
     "id": 6,
-    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, iusto.",
+    "text": "Нет плохой видимости",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "badVisibility_ok_day_0",
+    "code": "badVisibility_best_day_0",
     "significance": ""
   }
 ]
