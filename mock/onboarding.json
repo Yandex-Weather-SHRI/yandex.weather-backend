@@ -12,13 +12,13 @@
   },
   {
     "id": 6,
-    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, iusto.",
+    "text": "Нет плохой видимости",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "badVisibility_ok_day_0",
+    "code": "badVisibility_best_day_0",
     "significance": ""
   }
 ]
