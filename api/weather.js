@@ -4,7 +4,8 @@ const R = require('ramda')
 const fetch = require('request-promise-native')
 
 const { locationMiddleware } = require('../middlewares/location')
-const { forecastAdapter } = require('../utils/adapters')
+const { forecastAdapter, alertsAdapter,  } = require('../utils/adapters')
+const { filterAlertsByUserSettings, addDisabledAlerts } = require('../utils/enhancers')
 const { translateForecastData } = require('../utils/translators')
 const { getUserCategories } = require('../utils/db')
 const alertsMock = require('../mock/alerts')
@@ -45,26 +46,20 @@ function weatherAPI(api) {
         throw new Error('Invalid login parameter')
       }
 
-      const categories = getUserCategories(login)
+      const userCategories = getUserCategories(login)
       
-      if (!categories) {
+      if (!userCategories) {
         throw new Error('User not exists')
       }
 
-      const enabledCategories = categories.reduce((acc, category) => {
-        if (category.enabled) {
-          acc.push(category.name)
-        }
-        return acc
-      }, [])
-
       fetch(getRequestOptions(`http://api.weather.yandex.ru/v1/alerts?geoid=${request.geoid}`))
         .then((data) => {
-          const alertsData = JSON.parse(data)
-          const filteredAlerts = alertsData.concat(alertsMock).filter(({ code }) => {
-            const [category] = code.split(/\_/)
-            return enabledCategories.indexOf(category) >= 0
-          })
+          const alertsReal = JSON.parse(data)
+          const parsedAlerts = alertsAdapter(alertsReal.concat(alertsMock))
+          const filteredAlerts = R.compose(
+            (list) => addDisabledAlerts(list, userCategories, parsedAlerts),
+            (list) => filterAlertsByUserSettings(list, userCategories)
+          )(parsedAlerts)
 
           response.json(filteredAlerts)
         })
