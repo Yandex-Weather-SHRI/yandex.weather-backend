@@ -11,7 +11,7 @@ function filterAlertsByUserSettings(list, userCategories) {
   return list.filter(({ category }) => enabledCategories.indexOf(category) >= 0)
 }
 
-function addSuggestedAlert(list, userCategories, allAlerts) {
+function addSuggestedAlerts(list, userCategories, allAlerts) {
   const diabledCategories = getUserCategoriesByStatus(userCategories, false)
 
   const suggestedAlerts = allAlerts
@@ -25,5 +25,5 @@ function addSuggestedAlert(list, userCategories, allAlerts) {
 
 module.exports = {
   filterAlertsByUserSettings,
-  addSuggestedAlert,
+  addSuggestedAlerts,
 }
