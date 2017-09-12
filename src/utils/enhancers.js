@@ -13,17 +13,28 @@ export function filterAlertsByUserSettings(list, userCategories) {
   return list.filter(({ category }) => enabledCategories.indexOf(category) >= 0)
 }
 
+function getEnabledGroups(userCategories) {
+  return userCategories.reduce((acc, category) => {
+    if (category.enabled && acc.indexOf(category.group) < 0) {
+      return [...acc, category.group]
+    }
+    return acc
+  }, [])
+}
+
 function getSuggestedAlert(item) {
   return { ...item, weight: -1, type: 'suggestedAlert' }
 }
 
 export function addSuggestedAlerts(list, userCategories, allAlerts) {
-  const diabledCategories = getUserCategoriesByStatus(userCategories, false)
+  const disabledCategories = getUserCategoriesByStatus(userCategories, false)
+  const enabledGroups = getEnabledGroups(userCategories)
 
   if (list.length > 0) {
     const suggestedAlerts = allAlerts
-      .filter(({ category, day }) => diabledCategories.indexOf(category) >= 0 && parseInt(day, 10) === 0)
-      .sort(() => Math.random() - 0.5) // array shuffle
+      .filter(({ category, day }) => disabledCategories.indexOf(category) >= 0 && parseInt(day, 10) === 0)
+      .sort(() => Math.random() - 0.5)
+      .sort(item => enabledGroups.indexOf(item.categoryGroup) < 0)
       .slice(0, 1)
       .map(getSuggestedAlert)
 
