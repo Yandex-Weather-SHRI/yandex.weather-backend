@@ -1,10 +1,8 @@
-'use strict'
-
-const geoip = require('geoip-lite')
-const fetch = require('request-promise-native')
+import geoip from 'geoip-lite'
+import fetch from 'request-promise-native'
 
 
-function locationMiddleware(request, response, next) {
+export function locationMiddleware(request, response, next) {
   const geo = geoip.lookup(request.ip)
   const lat = geo ? geo.ll[0] : '55.7446189'
   const lon = geo ? geo.ll[1] : '37.6227287'
@@ -24,4 +22,3 @@ function locationMiddleware(request, response, next) {
     .catch(() => next(new Error('Can\'t connect to Yandex API')))
 }
 
-module.exports.locationMiddleware = locationMiddleware

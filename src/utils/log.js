@@ -1,10 +1,8 @@
-'use strict'
-
 /* eslint-disable no-console */
-const chalk = require('chalk')
+import chalk from 'chalk'
 
 
-const log = {
+export const log = {
   green(...rest) {
     console.log(chalk.green(...rest))
   },
@@ -19,7 +17,5 @@ const log = {
 
   white(...rest) {
     console.log(chalk.white(...rest))
-  }
+  },
 }
-
-module.exports.log = log

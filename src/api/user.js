@@ -1,26 +1,20 @@
-'use strict'
-
-const {
-  isUserExists,
-  getUserCategories,
-  createUserOrUpdateUserCategories,
-} = require('../utils/db')
-const { groupsSchema, defaultCategorySettings, onboardingCards } = require('../utils/settings')
+import { isUserExists, getUserCategories, createUserOrUpdateUserCategories } from 'utils/db'
+import { groupsSchema, defaultCategorySettings, onboardingCards } from 'utils/settings'
 
 
 function isOneSettingValid(setting) {
   return typeof setting === 'object'
     && Object.keys(setting).length === 3
-    && setting.hasOwnProperty('name')
-    && setting.hasOwnProperty('enabled')
-    && setting.hasOwnProperty('group')
+    && Object.prototype.hasOwnProperty.call(setting, 'name')
+    && Object.prototype.hasOwnProperty.call(setting, 'enabled')
+    && Object.prototype.hasOwnProperty.call(setting, 'group')
 }
 
 function isSettingsValid(settings) {
   return Array.isArray(settings) && settings.every(isOneSettingValid)
 }
 
-function userAPI(api) {
+export function userAPI(api) {
   api.post('/settings/categories', (request, response, next) => {
     try {
       const { login, items } = request.body
@@ -62,5 +56,3 @@ function userAPI(api) {
     }
   })
 }
-
-module.exports.userAPI = userAPI
