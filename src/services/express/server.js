@@ -1,22 +1,22 @@
-'use strict'
+import express from 'express'
+import morgan from 'morgan'
+import cors from 'cors'
+import bodyParser from 'body-parser'
 
-const path = require('path')
-const express = require('express')
-const morgan = require('morgan')
-const cors = require('cors')
-const bodyParser = require('body-parser')
-
-const { notFoundHandler, errorHandler } = require('../../middlewares/error')
-const { api } = require('../../api')
+import { notFoundHandler, errorHandler } from 'middlewares/error'
+import { api } from 'api'
 
 
-function expressService() {
+export function expressService() {
   const app = express()
+  const corsOptions = {
+    maxAge: 43200,
+  }
 
   app.disable('x-powered-by')
 
   // apply middlewares
-  app.use('*', cors())
+  app.use('*', cors(corsOptions))
   app.use(morgan('dev'))
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: true }))
@@ -34,5 +34,3 @@ function expressService() {
 
   return app
 }
-
-module.exports.expressService = expressService

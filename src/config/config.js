@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports.config = {
+export const config = {
   common: {
     env: process.env.NODE_ENV || 'development',
   },
@@ -8,5 +6,5 @@ module.exports.config = {
     host: process.env.HOST || '0.0.0.0',
     port: process.env.PORT || 3100,
   },
-  exportDataBaseURL: process.env.EXPORT_DB_URL || null
+  exportDataBaseURL: process.env.EXPORT_DB_URL || null,
 }

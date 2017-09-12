@@ -1,11 +1,9 @@
-'use strict'
+import R from 'ramda'
 
-const R = require('ramda')
-
-const schema = require('../mock/settings')
+import schema from '../mock/settings'
 
 
-function forecastAdapter(data) {
+export function forecastAdapter(data) {
   return {
     fact: R.pick([
       'condition',
@@ -34,16 +32,13 @@ function getCategoryGroup(category) {
   return null
 }
 
-function alertsAdapter(alertsList) {
+export function alertsAdapter(alertsList) {
   return alertsList.map((item) => {
     const [category, status,, day] = item.code.split(/_/)
     const categoryGroup = getCategoryGroup(category)
-    const pickedItem = R.pick(['id', 'text'], item)
-    return Object.assign({}, pickedItem, { category, categoryGroup, status, day, type: 'alert' })
+    return R.compose(
+      R.merge({ category, categoryGroup, status, day, type: 'alert' }),
+      R.pick(['id', 'text'])
+    )(item)
   })
-}
-
-module.exports = {
-  forecastAdapter,
-  alertsAdapter,
 }
