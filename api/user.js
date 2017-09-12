@@ -48,7 +48,6 @@ function userAPI(api) {
   })
 
   api.get('/settings/onboarding_cards', (request, response) => {
-    console.log(onboardingCards)
     response.json(onboardingCards)
   })
 
