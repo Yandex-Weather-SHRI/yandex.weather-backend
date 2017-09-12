@@ -5,7 +5,7 @@ const fetch = require('request-promise-native')
 
 const { locationMiddleware } = require('../middlewares/location')
 const { forecastAdapter, alertsAdapter,  } = require('../utils/adapters')
-const { filterAlertsByUserSettings, addDisabledAlerts } = require('../utils/enhancers')
+const { filterAlertsByUserSettings, addSuggestedAlerts } = require('../utils/enhancers')
 const { translateForecastData } = require('../utils/translators')
 const { getUserCategories } = require('../utils/db')
 const alertsMock = require('../mock/alerts')
@@ -57,7 +57,7 @@ function weatherAPI(api) {
           const alertsReal = JSON.parse(data)
           const parsedAlerts = alertsAdapter(alertsReal.concat(alertsMock))
           const filteredAlerts = R.compose(
-            (list) => addDisabledAlerts(list, userCategories, parsedAlerts),
+            (list) => addSuggestedAlerts(list, userCategories, parsedAlerts),
             (list) => filterAlertsByUserSettings(list, userCategories)
           )(parsedAlerts)
 

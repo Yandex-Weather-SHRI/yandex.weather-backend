@@ -1,7 +1,9 @@
 'use strict'
 
 const R = require('ramda')
+
 const schema = require('../mock/settings')
+
 
 function forecastAdapter(data) {
   return {
@@ -17,7 +19,7 @@ function forecastAdapter(data) {
     ], data.fact),
     geo_object: R.pick([
       'locality',
-    ], data.geo_object)
+    ], data.geo_object),
   }
 }
 
@@ -36,7 +38,8 @@ function alertsAdapter(alertsList) {
   return alertsList.map((item) => {
     const [category, status,, day] = item.code.split(/_/)
     const categoryGroup = getCategoryGroup(category)
-    return Object.assign({}, item, { category, categoryGroup, status, day, type: 'alert' })
+    const pickedItem = R.pick(['id', 'text'], item)
+    return Object.assign({}, pickedItem, { category, categoryGroup, status, day, type: 'alert' })
   })
 }
 
