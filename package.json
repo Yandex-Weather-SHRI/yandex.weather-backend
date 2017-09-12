@@ -2,9 +2,13 @@
   "name": "yandex.weather-backend",
   "version": "0.1.0",
   "scripts": {
-    "start": "node ./index.js",
-    "dev": "NODE_ENV=development node -r dotenv/config ./index.js",
-    "prod": "NODE_ENV=production node -r dotenv/config ./index.js"
+    "start": "NODE_ENV=production node -r dotenv/config build/index.js",
+    "dev": "NODE_ENV=development DEBUG=cc:* nodemon -w src -x 'npm run build && node -r dotenv/config build/index.js'",
+    "build": "babel --copy-files -d build src",
+    "postinstall": "npm run build",
+    "lint": "eslint src",
+    "prepush": "npm run lint",
+    "test": "npm run lint"
   },
   "license": "MIT",
   "dependencies": {
@@ -19,5 +23,17 @@
     "ramda": "^0.24.1",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-module-resolver": "^2.7.1",
+    "babel-preset-node8": "^1.2.0",
+    "eslint": "^4.6.1",
+    "eslint-config-atomix-base": "^4.1.0",
+    "eslint-import-resolver-babel-module": "^3.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "husky": "^0.14.3",
+    "nodemon": "^1.12.0"
   }
 }
