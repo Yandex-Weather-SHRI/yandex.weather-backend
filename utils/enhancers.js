@@ -1,39 +1,29 @@
 'use strict'
 
-function filterAlertsByUserSettings(list, userCategories) {
-  const enabledCategories = userCategories.reduce((acc, category) => {
-    if (category.enabled) {
-      acc.push(category.name)
-    }
-    return acc
-  }, [])
-
-  return list.filter(({ category }) => {
-    return enabledCategories.indexOf(category) >= 0
-  })
+function getUserCategoriesByStatus(categories, enabled) {
+  return categories
+    .filter((category) => category.enabled === enabled)
+    .map((category) => category.name)
 }
 
-function addDisabledAlerts(list, userCategories, allAlerts) {
-  const diabledCategories = userCategories.reduce((acc, category) => {
-    if (!category.enabled) {
-      acc.push(category.name)
-    }
-    return acc
-  }, [])
+function filterAlertsByUserSettings(list, userCategories) {
+  const enabledCategories = getUserCategoriesByStatus(userCategories, true)
+  return list.filter(({ category }) => enabledCategories.indexOf(category) >= 0)
+}
+
+function addSuggestedAlert(list, userCategories, allAlerts) {
+  const diabledCategories = getUserCategoriesByStatus(userCategories, false)
 
   const suggestedAlerts = allAlerts
-    .filter(({ category, day }) => {
-      return diabledCategories.indexOf(category) >= 0 && day == 0
-    })
+    .filter(({ category, day }) => diabledCategories.indexOf(category) >= 0 && day == 0)
+    .sort(() => Math.random() - 0.5) // array shuffle
     .slice(0, 3)
-    .map((item) => {
-      return Object.assign({}, item, { type: 'suggestedAlert' })
-    })
+    .map((item) => Object.assign({}, item, { type: 'suggestedAlert' }))
 
   return list.concat(suggestedAlerts)
 }
 
 module.exports = {
   filterAlertsByUserSettings,
-  addDisabledAlerts,
+  addSuggestedAlert,
 }
