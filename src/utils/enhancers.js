@@ -16,7 +16,7 @@ export function addSuggestedAlerts(list, userCategories, allAlerts) {
     .filter(({ category, day }) => diabledCategories.indexOf(category) >= 0 && parseInt(day, 10) === 0)
     .sort(() => Math.random() - 0.5) // array shuffle
     .slice(0, 3)
-    .map(item => ({ ...item, type: 'suggestedAlert' }))
+    .map(item => ({ ...item, weight: -1, type: 'suggestedAlert' }))
 
-  return list.concat(suggestedAlerts)
+  return [...list, ...suggestedAlerts]
 }

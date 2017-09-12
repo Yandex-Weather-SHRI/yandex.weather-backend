@@ -32,12 +32,27 @@ function getCategoryGroup(category) {
   return null
 }
 
+function getWeightByStatus(status) {
+  const weights = {
+    best: 0,
+    ok: 1,
+    bad: 2,
+  }
+
+  if (weights[status] !== undefined) {
+    return weights[status]
+  }
+
+  return -1
+}
+
 export function alertsAdapter(alertsList) {
   return alertsList.map((item) => {
     const [category, status,, day] = item.code.split(/_/)
     const categoryGroup = getCategoryGroup(category)
+    const weight = getWeightByStatus(status)
     return R.compose(
-      R.merge({ category, categoryGroup, status, day, type: 'alert' }),
+      R.merge({ category, categoryGroup, status, weight, day, type: 'alert' }),
       R.pick(['id', 'text'])
     )(item)
   })
