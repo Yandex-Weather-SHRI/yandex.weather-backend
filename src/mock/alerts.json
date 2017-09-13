@@ -1,6 +1,41 @@
 [
   {
     "id": 1,
+    "text": "Небольшая концентрация пыльцы в воздухе, благоприятный день",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "allergy_best_day_0",
+    "significance": ""
+  },
+  {
+    "id": 2,
+    "text": "Желательно быть внимательным к организму, уровень концентрации влияет на большинство людей",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "allergy_ok_day_1",
+    "significance": ""
+  },
+  {
+    "id": 3,
+    "text": "Высоко интенсивное опыление, желательно уменьшить время нахождения на открытом воздухе",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "allergy_bad_day_2",
+    "significance": ""
+  },
+
+
+  {
+    "id": 4,
     "text": "Для людей со слабым сердцем благоприятный день",
     "text_short": "",
     "provider": "",
@@ -11,7 +46,7 @@
     "significance": ""
   },
   {
-    "id": 2,
+    "id": 5,
     "text": "Людям со слабым сердцем желательно уменьшить физическую активность",
     "text_short": "",
     "provider": "",
@@ -22,7 +57,20 @@
     "significance": ""
   },
   {
-    "id": 3,
+    "id": 5,
+    "text": "Людям со слабым сердцем желательно быть осторожным",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "heart_ok_day_2",
+    "significance": ""
+  },
+
+
+  {
+    "id": 6,
     "text": "Для людей с суставами, реагирующими на погоду, рекомендуется уменьшить физическую активность",
     "text_short": "",
     "provider": "",
@@ -33,7 +81,7 @@
     "significance": ""
   },
   {
-    "id": 33,
+    "id": 7,
     "text": "Для людей с суставами, реагирующими на погоду, благоприятный день",
     "text_short": "",
     "provider": "",
@@ -43,63 +91,94 @@
     "code": "joint_best_day_1",
     "significance": ""
   },
+
+
   {
-    "id": 4,
-    "text": "Благоприятный день для людей с повышенной чувствительностью бронхов",
-    "text_short": "",
-    "provider": "",
-    "image_url": "",
-    "source_url": "",
-    "push": false,
-    "code": "asthma_best_day_0",
-    "significance": ""
-  },
-  {
-    "id": 44,
+    "id": 8,
     "text": "Для людей с повышенной чувствительностью бронхов рекомендуется выбрать спокойную деятельность",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "asthma_bad_day_1",
+    "code": "asthma_bad_day_0",
     "significance": ""
   },
   {
-    "id": 7,
-    "text": "Рекомендуется снизить потребление кофеина или других крепких напитков",
+    "id": 9,
+    "text": "Благоприятный день для людей с повышенной чувствительностью бронхов",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "head_bad_day_0",
+    "code": "asthma_best_day_1",
+    "significance": ""
+  },
+
+
+
+  {
+    "id": 10,
+    "text": "Пребывание вне помещения не представляет опасности",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "healthSkin_best_day_0",
     "significance": ""
   },
   {
-    "id": 8,
+    "id": 11,
+    "text": "В полуденные часы оставайтесь в тени! Пользуйтесь солнцезащитным кремом!",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "healthSkin_ok_day_1",
+    "significance": ""
+  },
+  {
+    "id": 12,
+    "text": "Полуденные часы пережидайте внутри помещения! Вне помещения оставайтесь в тени!",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "healthSkin_bad_day_2",
+    "significance": ""
+  },
+
+
+  {
+    "id": 13,
     "text": "Благоприятный день для людей восприимчивых к резким перепадам давления",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "head_best_day_1",
+    "code": "head_best_day_0",
     "significance": ""
   },
   {
-    "id": 6,
-    "text": "Нет плохой видимости",
+    "id": 14,
+    "text": "Рекомендуется снизить потребление кофеина или других крепких напитков",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "badVisibility_best_day_0",
+    "code": "head_bad_day_1",
     "significance": ""
   },
+
+
   {
-    "id": 9,
+    "id": 15,
     "text": "На дорогах ожидается гололед, будьте осторожнее",
     "text_short": "",
     "provider": "",
@@ -110,7 +189,7 @@
     "significance": ""
   },
   {
-    "id": 10,
+    "id": 16,
     "text": "Вероятность появления гололеда низкая, наслаждайтесь поездками",
     "text_short": "",
     "provider": "",
@@ -120,9 +199,12 @@
     "code": "ice_best_day_1",
     "significance": ""
   },
+
+
+
   {
-    "id": 11,
-    "text": "Ожидается сильный ветер, рекомендуется не оставлять автомобиль вблизи деревьев и неустойчивых конструкций, при возможности паркуйте авто под крышу",
+    "id": 17,
+    "text": "Ожидается сильный ветер, рекомендуется не оставлять автомобиль вблизи деревьев",
     "text_short": "",
     "provider": "",
     "image_url": "",
@@ -132,8 +214,8 @@
     "significance": ""
   },
   {
-    "id": 12,
-    "text": "Благоприятные погодные условия, сильного ветра, града и грозы не ожидается",
+    "id": 18,
+    "text": "Благоприятные погодные условия, сильного ветра не ожидается",
     "text_short": "",
     "provider": "",
     "image_url": "",
@@ -141,5 +223,269 @@
     "push": false,
     "code": "wind_best_day_1",
     "significance": ""
+  },
+
+
+  {
+    "id": 19,
+    "text": "Сильный снегопад, рекомендуется воспользоваться общественным транспортом",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "snow_best_day_0",
+    "significance": ""
+  },
+  {
+    "id": 20,
+    "text": "Снежный покров не мешает поездкам на автомобиле",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "snow_best_day_1",
+    "significance": ""
+  },
+
+
+  {
+    "id": 21,
+    "text": "Рекомендуется не мыть авто в ближайшие три дня",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "washCar_bad_day_0",
+    "significance": ""
+  },
+  {
+    "id": 22,
+    "text": "В ближайшее три дня осадки не ожидаются, благоприятные условия для мойки машины",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "washCar_best_day_1",
+    "significance": ""
+  },
+
+
+  {
+    "id": 23,
+    "text": "Хорошая погода для выезда на природу",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "precipitation_best_day_0",
+    "significance": ""
+  },
+  {
+    "id": 24,
+    "text": "Ожидаются дожди, рекомендуется выбрать развлечения в закрытом помещении",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "precipitation_bad_day_1",
+    "significance": ""
+  },
+
+
+  {
+    "id": 25,
+    "text": "Для большинства людей комфортная температура для купания",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "waterTemp_ok_day_0",
+    "significance": ""
+  },
+  {
+    "id": 26,
+    "text": "В такой воде купанием наслаждаются абсолютно все",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "waterTemp_best_day_1",
+    "significance": ""
+  },
+  {
+    "id": 27,
+    "text": "Вода еще холодная для купания",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "waterTemp_bad_day_2",
+    "significance": ""
+  },
+
+
+  {
+    "id": 28,
+    "text": "Пребывание вне помещения не представляет опасности",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "touristsSkin_best_day_0",
+    "significance": ""
+  },
+  {
+    "id": 29,
+    "text": "В полуденные часы оставайтесь в тени! Пользуйтесь солнцезащитным кремом!",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "touristsSkin_ok_day_1",
+    "significance": ""
+  },
+  {
+    "id": 30,
+    "text": "Полуденные часы пережидайте внутри помещения! Вне помещения оставайтесь в тени!",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "touristsSkin_bad_day_2",
+    "significance": ""
+  },
+
+
+  {
+    "id": 31,
+    "text": "Комфортная температура для ночевки в палатке",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "touristsFrosts_best_day_0",
+    "significance": ""
+  },
+  {
+    "id": 32,
+    "text": "Ожидаются ночные заморозки, рекомендуется воздержаться от сна в палатке",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "touristsFrosts_bad_day_1",
+    "significance": ""
+  },
+
+
+  {
+    "id": 33,
+    "text": "Ожидается дождь, рекомендуется отложить поливку огорода",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "rain_best_day_0",
+    "significance": ""
+  },
+  {
+    "id": 34,
+    "text": "Рекомендуется полить огород, осадков не ожидается",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "rain_bad_day_1",
+    "significance": ""
+  },
+
+
+
+  {
+    "id": 35,
+    "text": "Ожидется град, рекомендуется прикрыть посадки в открытом грунте",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "hailstones_bad_day_0",
+    "significance": ""
+  },
+  {
+    "id": 36,
+    "text": "Безопасный день, град не ожидается",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "hailstones_best_day_1",
+    "significance": ""
+  },
+
+
+  {
+    "id": 37,
+    "text": "Ночью ожидаются заморозки, рекомендуется утеплить посадки",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "countrymenFrosts_bad_day_0",
+    "significance": ""
+  },
+  {
+    "id": 38,
+    "text": "Ночная температура не будет опускаться ниже нуля",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "countrymenFrosts_best_day_1",
+    "significance": ""
+  },
+
+
+  {
+    "id": 39,
+    "text": "Высокая влажность, рекомендуется проветрить теплицы",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "ventilation_bad_day_0",
+    "significance": ""
+  },
+  {
+    "id": 40,
+    "text": "Проветривание теплиц не требуется, благоприятные погодные условия",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "ventilation_best_day_1",
+    "significance": ""
   }
+
 ]

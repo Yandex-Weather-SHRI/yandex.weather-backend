@@ -2,21 +2,39 @@
   "health": {
     "title": "Здоровье",
     "categories": {
+      "allergy": "Аллергия",
       "heart": "Сердце",
       "joint": "Суставы",
       "asthma": "Астма",
-      "skin": "Кожа",
-      "allergy": "Аллергия",
+      "healthSkin": "УФ индекс",
       "head": "Головные боли"
     }
   },
   "motorists": {
     "title": "Автомобилисты",
     "categories": {
-      "badVisibility": "Плохая видимость",
-      "washCar": "Помыть машину",
       "ice": "Гололёд",
-      "wind": "Сильный ветер"
+      "wind": "Сильный ветер",
+      "snow": "Снежный покров",
+      "washCar": "Помыть машину"
+    }
+  },
+  "tourists": {
+    "title": "Туристы",
+    "categories": {
+      "precipitation": "Осадки на выходные",
+      "waterTemp": "Вода в водоемах",
+      "touristsSkin" : "УФ индекс",
+      "touristsFrosts" : "Заморозки"
+    }
+  },
+  "countrymen": {
+    "title": "Дачники",
+    "categories": {
+      "rain": "Осадки - дождь",
+      "hailstones" : "Град",
+      "countrymenFrosts" : "Заморозки",
+      "ventilation" : "Проветривание теплиц"
     }
   }
 }
