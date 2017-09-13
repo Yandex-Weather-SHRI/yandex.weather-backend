@@ -11,14 +11,36 @@
     "significance": ""
   },
   {
-    "id": 6,
-    "text": "Нет плохой видимости",
+    "id": 15,
+    "text": "На дорогах ожидается гололед, будьте осторожнее",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "badVisibility_best_day_0",
+    "code": "ice_bad_day_0",
+    "significance": ""
+  },
+  {
+    "id": 25,
+    "text": "Для большинства людей комфортная температура для купания",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "waterTemp_ok_day_0",
+    "significance": ""
+  },
+  {
+    "id": 39,
+    "text": "Высокая влажность, рекомендуется проветрить теплицы",
+    "text_short": "",
+    "provider": "",
+    "image_url": "",
+    "source_url": "",
+    "push": false,
+    "code": "ventilation_bad_day_0",
     "significance": ""
   }
 ]
