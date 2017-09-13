@@ -11,14 +11,14 @@
     "significance": ""
   },
   {
-    "id": 15,
-    "text": "На дорогах ожидается гололед, будьте осторожнее",
+    "id": 21,
+    "text": "Рекомендуется не мыть авто в ближайшие три дня",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "ice_bad_day_0",
+    "code": "washCar_bad_day_0",
     "significance": ""
   },
   {
@@ -33,14 +33,14 @@
     "significance": ""
   },
   {
-    "id": 39,
-    "text": "Высокая влажность, рекомендуется проветрить теплицы",
+    "id": 37,
+    "text": "Ночью ожидаются заморозки, рекомендуется утеплить посадки",
     "text_short": "",
     "provider": "",
     "image_url": "",
     "source_url": "",
     "push": false,
-    "code": "ventilation_bad_day_0",
+    "code": "countrymenFrosts_bad_day_0",
     "significance": ""
   }
 ]
