@@ -34,7 +34,18 @@ export function addSuggestedAlerts(list, userCategories, allAlerts) {
     const suggestedAlerts = allAlerts
       .filter(({ category, day }) => disabledCategories.indexOf(category) >= 0 && parseInt(day, 10) === 0)
       .sort(() => Math.random() - 0.5)
-      .sort(item => enabledGroups.indexOf(item.categoryGroup) < 0)
+      .sort((a, b) => {
+        const enabledLeft = enabledGroups.indexOf(a.categoryGroup) >= 0
+        const enabledRight = enabledGroups.indexOf(b.categoryGroup) >= 0
+        if (enabledLeft && !enabledRight) {
+          return -1
+        }
+        else if (!enabledLeft && enabledRight) {
+          return 1
+        }
+
+        return 0
+      })
       .slice(0, 1)
       .map(getSuggestedAlert)
 
