@@ -35,13 +35,13 @@ export function userAPI(api) {
       }
 
       const { login, items = [] } = request.body
-      const user = await UserModel.findOne({ login })
+      let user = await UserModel.findOne({ login })
 
       if (!user) {
         const categories = R.unionWith(R.eqBy(R.prop('name')), items, defaultCategoriesSettings)
         const newUserData = { login, settings: { categories } }
-        const userData = await UserModel.create(newUserData)
-        return response.status(201).json(userData.settings.categories)
+        user = await UserModel.create(newUserData)
+        return response.status(201).json(user.settings.categories)
       }
 
       if (items.length === 0) {
@@ -50,8 +50,8 @@ export function userAPI(api) {
 
       const categories = R.unionWith(R.eqBy(R.prop('name')), items, user.settings.categories)
       const nextUserData = Object.assign(user, { settings: { categories } })
-      const userData = await nextUserData.save()
-      return response.status(202).json(userData.settings.categories)
+      user = await nextUserData.save()
+      return response.status(202).json(user.settings.categories)
     }
     catch (error) {
       return next(error)
