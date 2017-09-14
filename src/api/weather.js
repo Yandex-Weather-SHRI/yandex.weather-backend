@@ -1,13 +1,13 @@
-'use strict'
-
 import R from 'ramda'
 import fetch from 'request-promise-native'
+import { check, validationResult } from 'express-validator/check'
 
+import { UserModel } from 'models/user'
+import { UserNotFound, ValidationError } from 'errors'
 import { locationMiddleware } from 'middlewares/location'
-import { forecastAdapter, alertsAdapter } from 'utils/adapters'
+import { forecastAdapter, alertsAdapter, errorsAdapter } from 'utils/adapters'
 import { filterAlertsByUserSettings, addSuggestedAlerts } from 'utils/enhancers'
 import { translateForecastData } from 'utils/translators'
-import { getUserCategories } from 'utils/db'
 import alertsMock from 'mock/alerts'
 
 
@@ -38,32 +38,32 @@ export function weatherAPI(api) {
     })
   })
 
-  api.get('/alerts', locationMiddleware, (request, response, next) => {
+  api.get('/alerts', locationMiddleware, [
+    check('login', 'Укажите логин').exists(),
+  ], async (request, response, next) => {
     try {
+      const errors = validationResult(request)
+
+      if (!errors.isEmpty()) {
+        throw new ValidationError(errorsAdapter(errors.mapped()))
+      }
+
       const { login } = request.query
+      const user = await UserModel.findOne({ login })
 
-      if (!login) {
-        throw new Error('Invalid login parameter')
+      if (!user) {
+        throw new UserNotFound({ login })
       }
 
-      const userCategories = getUserCategories(login)
+      const data = await fetch(getRequestOptions(`http://api.weather.yandex.ru/v1/alerts?geoid=${request.geoid}`))
+      const alertsReal = JSON.parse(data)
+      const parsedAlerts = alertsAdapter(alertsReal.concat(alertsMock))
+      const filteredAlerts = R.compose(
+        list => addSuggestedAlerts(list, user.settings.categories, parsedAlerts),
+        list => filterAlertsByUserSettings(list, user.settings.categories)
+      )(parsedAlerts)
 
-      if (!userCategories) {
-        throw new Error('User not exists')
-      }
-
-      fetch(getRequestOptions(`http://api.weather.yandex.ru/v1/alerts?geoid=${request.geoid}`))
-        .then((data) => {
-          const alertsReal = JSON.parse(data)
-          const parsedAlerts = alertsAdapter(alertsReal.concat(alertsMock))
-          const filteredAlerts = R.compose(
-            list => addSuggestedAlerts(list, userCategories, parsedAlerts),
-            list => filterAlertsByUserSettings(list, userCategories)
-          )(parsedAlerts)
-
-          response.json(filteredAlerts)
-        })
-        .catch(() => next(new Error('Can\'t connect to Yandex API')))
+      response.json(filteredAlerts)
     }
     catch (error) {
       next(error)
