@@ -1,6 +1,7 @@
 {
   "presets": ["node8"],
   "plugins": [
+    "transform-async-to-generator",
     ["module-resolver", {
       "root": ["./src"],
       "extensions": [".js", ".json"]

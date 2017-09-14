@@ -57,3 +57,9 @@ export function alertsAdapter(alertsList) {
     )(item)
   })
 }
+
+export function errorsAdapter(errors) {
+  return Object.keys(errors).map(field => (
+    { field, message: errors[field].msg, value: errors[field].value }
+  ))
+}

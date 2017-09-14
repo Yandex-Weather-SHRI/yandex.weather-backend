@@ -1,35 +1,60 @@
-import { isUserExists, getUserCategories, createUserOrUpdateUserCategories } from 'utils/db'
-import { groupsSchema, defaultCategorySettings, onboardingCards } from 'utils/settings'
+import R from 'ramda'
+import { check, validationResult } from 'express-validator/check'
 
+import { groupsSchema, defaultCategoriesSettings, onboardingCards } from 'utils/settings'
+import { errorsAdapter } from 'utils/adapters'
+import { UserModel } from 'models/user'
+import { UserNotFound, ValidationError } from 'errors'
 
-function isOneSettingValid(setting) {
-  return typeof setting === 'object'
-    && Object.keys(setting).length === 3
-    && Object.prototype.hasOwnProperty.call(setting, 'name')
-    && Object.prototype.hasOwnProperty.call(setting, 'enabled')
-    && Object.prototype.hasOwnProperty.call(setting, 'group')
-}
-
-function isSettingsValid(settings) {
-  return Array.isArray(settings) && settings.every(isOneSettingValid)
-}
 
 export function userAPI(api) {
-  api.post('/settings/categories', (request, response, next) => {
+  api.get('/settings/categories', async (request, response, next) => {
     try {
-      const { login, items } = request.body
-      const categories = items || []
+      const login = request.query.login
+      const user = await UserModel.findOne({ login })
 
-      if (isSettingsValid(categories)) {
-        const user = createUserOrUpdateUserCategories(login, categories)
-        response.json(user.settings.categories)
+      if (!user) {
+        throw new UserNotFound({ login })
       }
-      else {
-        throw new Error('Invalid settings')
-      }
+
+      response.json(user.settings.categories)
     }
     catch (error) {
       next(error)
+    }
+  })
+
+  api.post('/settings/categories', [
+    check('login', 'Укажите логин').exists(),
+  ], async (request, response, next) => {
+    try {
+      const errors = validationResult(request)
+
+      if (!errors.isEmpty()) {
+        throw new ValidationError(errorsAdapter(errors.mapped()))
+      }
+
+      const { login, items = [] } = request.body
+      let user = await UserModel.findOne({ login })
+
+      if (!user) {
+        const categories = R.unionWith(R.eqBy(R.prop('name')), items, defaultCategoriesSettings)
+        const newUserData = { login, settings: { categories } }
+        user = await UserModel.create(newUserData)
+        return response.status(201).json(user.settings.categories)
+      }
+
+      if (items.length === 0) {
+        return response.json(user.settings.categories)
+      }
+
+      const categories = R.unionWith(R.eqBy(R.prop('name')), items, user.settings.categories)
+      const nextUserData = Object.assign(user, { settings: { categories } })
+      user = await nextUserData.save()
+      return response.status(202).json(user.settings.categories)
+    }
+    catch (error) {
+      return next(error)
     }
   })
 
@@ -38,21 +63,10 @@ export function userAPI(api) {
   })
 
   api.get('/settings/default', (request, response) => {
-    response.json(defaultCategorySettings)
+    response.json(defaultCategoriesSettings)
   })
 
   api.get('/settings/onboarding_cards', (request, response) => {
     response.json(onboardingCards)
-  })
-
-  api.get('/settings/categories', (request, response, next) => {
-    const login = request.query.login
-
-    if (isUserExists(login)) {
-      response.json(getUserCategories(login))
-    }
-    else {
-      next(new Error('User doesn\'t exist'))
-    }
   })
 }

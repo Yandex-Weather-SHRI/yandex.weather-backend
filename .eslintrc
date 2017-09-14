@@ -19,6 +19,7 @@
     }
   },
   "rules": {
+    "unicorn/custom-error-definition": 0,
     "import/extensions": ["error", "never"],
     "import/no-anonymous-default-export": ["error", {
       "allowArray": false,
