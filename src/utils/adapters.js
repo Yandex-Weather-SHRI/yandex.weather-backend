@@ -57,3 +57,9 @@ export function alertsAdapter(alertsList) {
     )(item)
   })
 }
+
+export function errorsAdapter(errors) {
+  return Object.keys(errors).reduce((acc, field) => (
+    [...acc, { field, message: errors[field].msg, value: errors[field].value }]
+  ), [])
+}
