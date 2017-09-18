@@ -5,8 +5,8 @@
       "allergy": "Аллергия",
       "heart": "Сердце",
       "joint": "Суставы",
-      "asthma": "Астма",
-      "healthSkin": "УФ индекс",
+      "asthma": "Легкие",
+      "healthSkin": "Ультрафиолет",
       "head": "Головные боли"
     }
   },
@@ -14,24 +14,24 @@
     "title": "Автомобилисты",
     "categories": {
       "ice": "Гололёд",
-      "wind": "Сильный ветер",
+      "wind": "Ветер",
       "snow": "Снежный покров",
-      "washCar": "Помыть машину"
+      "washCar": "Мойка автомобиля"
     }
   },
   "tourists": {
     "title": "Туристы",
     "categories": {
-      "precipitation": "Осадки на выходные",
-      "waterTemp": "Вода в водоемах",
-      "touristsSkin" : "УФ индекс",
+      "precipitation": "Осадки",
+      "waterTemp": "Температура воды",
+      "touristsSkin" : "Ультрафиолет",
       "touristsFrosts" : "Заморозки"
     }
   },
   "countrymen": {
     "title": "Дачники",
     "categories": {
-      "rain": "Осадки - дождь",
+      "rain": "Полив",
       "hailstones" : "Град",
       "countrymenFrosts" : "Заморозки",
       "ventilation" : "Вентиляция теплиц"
